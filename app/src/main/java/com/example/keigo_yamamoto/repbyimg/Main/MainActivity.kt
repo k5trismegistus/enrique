@@ -5,13 +5,12 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.support.v4.content.FileProvider
-import android.widget.Toolbar
+import android.util.Log
+import android.view.ContextMenu
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
-import android.widget.AdapterView
-import android.widget.GridView
-import android.widget.SearchView
+import android.widget.*
 import com.example.keigo_yamamoto.repbyimg.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -29,6 +28,7 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener {
 
         search_box.setOnQueryTextListener(this)
         search_box.isSubmitButtonEnabled = false
+        search_box.setIconifiedByDefault(false)
 
         imagesGrid.onItemClickListener =
                 AdapterView.OnItemClickListener { parent, view, position, id ->
@@ -45,11 +45,35 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener {
 
                     startActivity(intent)
                 }
+
+        registerForContextMenu(imagesGrid)
+
         imagesGrid.adapter = gridAdapter
 
         val toolbar = findViewById(R.id.toolbar) as Toolbar?
         setActionBar(toolbar)
 
+    }
+
+    override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
+        super.onCreateContextMenu(menu, v, menuInfo)
+        menu?.setHeaderTitle(R.string.edit_dialog_title)
+        menu?.add(0,0,0,R.string.menu_item_edit)
+        menu?.add(0,1,1,R.string.menu_item_delete)
+    }
+
+    override fun onContextItemSelected(item: MenuItem): Boolean {
+        val imageList = ImageList.getInstance(this)
+        val info = item.menuInfo as AdapterView.AdapterContextMenuInfo
+        val targetFile = gridAdapter.getItem(info.position) as File
+
+        when(item.itemId) {
+            0 -> Log.i("edit", "edit")
+            1 -> imageList.deleteImage(targetFile.name)
+            else -> Log.i("contextmenu", "something")
+        }
+        gridAdapter.notifyDataSetChanged()
+        return false
     }
 
     override fun onQueryTextSubmit(query: String?): Boolean {

@@ -17,7 +17,7 @@ class ImageGridAdapter(_context: Context?): BaseAdapter() {
     val context = _context
     val inflater = LayoutInflater.from(context)
     var query: String? = null
-    var imageList = ImageList(context)
+    var imageList = ImageList.getInstance(context)
 
     override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View? {
 

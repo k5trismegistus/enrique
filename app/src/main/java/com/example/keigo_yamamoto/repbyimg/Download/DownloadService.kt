@@ -11,6 +11,7 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.IBinder
 import android.util.Log
+import com.example.keigo_yamamoto.repbyimg.Main.ImageList
 import com.example.keigo_yamamoto.repbyimg.Main.MainActivity
 import com.example.keigo_yamamoto.repbyimg.ResuImage
 import io.realm.Realm
@@ -54,15 +55,7 @@ class DownloadService: Service() {
                     val response = downloadImage(url)
                     val image = BitmapFactory.decodeStream(response.body().byteStream())
 
-                    val imgDir = File(filesDir, "images")
-                    imgDir.mkdirs()
-                    val fileOutputStream = FileOutputStream(File(imgDir, filename))
-
-                    val os = context.openFileOutput(filename, Context.MODE_PRIVATE)
-                    image.compress(Bitmap.CompressFormat.JPEG, 100, fileOutputStream)
-                    os.close()
-
-                    saveToRealm(filename, inputText?:"default")
+                    ImageList.getInstance(context).createImage(inputText, image)
 
                 } catch(e: Exception) {
                     Log.e("error", e.toString())
@@ -103,15 +96,6 @@ class DownloadService: Service() {
                 .build()
         val response = okhttpclient.newCall(req).execute()
         return response
-    }
-
-    fun saveToRealm(filename: String, keyword: String) {
-        val realm = Realm.getDefaultInstance()
-        realm.beginTransaction()
-        var ri = realm.createObject(ResuImage::class.java)
-        ri.filename = filename
-        ri.keyword = keyword
-        realm.commitTransaction()
     }
 
     fun makeNotification(message: String) {
