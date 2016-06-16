@@ -42,7 +42,7 @@ class DownloadService: Service() {
     override fun onStartCommand(intent: Intent?, flags: Int, startId: Int): Int {
 
         val url = intent?.getStringExtra("url")
-        val inputText = intent?.getStringExtra("inputText")
+        val inputText = intent?.getStringExtra("inputKeyword")
         val context = this
 
         Observable.create(object: Observable.OnSubscribe<Int> {

@@ -58,7 +58,7 @@ class ImageList(context: Context?) {
 
     }
 
-    fun updateImage(filename: String, newKeyword: String) {
+    fun updateImage(filename: String?, newKeyword: String?) {
         Log.i("updateImage", filename)
     }
 

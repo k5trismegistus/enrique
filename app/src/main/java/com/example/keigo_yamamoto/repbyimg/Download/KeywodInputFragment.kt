@@ -8,21 +8,23 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import com.example.keigo_yamamoto.repbyimg.KeywordInputReceiver
 import com.example.keigo_yamamoto.repbyimg.R
 
 class KeywodInputFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        Log.d("fragment", "fragment")
+        val bundle = arguments
         val dialog = AlertDialog.Builder(activity)
         dialog.setTitle(R.string.download_dialog_title)
         val input = EditText(activity)
         dialog.setView(input)
 
         dialog.setPositiveButton("OK") { dialog: DialogInterface, which: Int ->
-            val inputText = input.text.toString()
-            val drActivity = activity as DownloadReceiverActivity
-            drActivity.startDownload(inputText)
+            bundle?.putString("inputKeyword", input.text.toString())
+            val drActivity = activity as KeywordInputReceiver
+            Log.i("bundle", bundle.toString())
+            drActivity.onReceiveInput(bundle)
         }
 
         return dialog.create()
@@ -30,7 +32,6 @@ class KeywodInputFragment : DialogFragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        activity.finish()
     }
 
 }

@@ -11,12 +11,14 @@ import android.view.View
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
+import com.example.keigo_yamamoto.repbyimg.Download.KeywodInputFragment
+import com.example.keigo_yamamoto.repbyimg.KeywordInputReceiver
 import com.example.keigo_yamamoto.repbyimg.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
 
-class MainActivity : Activity(), SearchView.OnQueryTextListener {
+class MainActivity : Activity(), SearchView.OnQueryTextListener, KeywordInputReceiver {
 
     lateinit var gridAdapter: ImageGridAdapter
 
@@ -67,7 +69,7 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener {
         val targetFile = gridAdapter.getItem(info.position) as File
 
         when(item.itemId) {
-            0 -> Log.i("edit", "edit")
+            0 -> updateImage(targetFile.name)
             1 -> imageList.deleteImage(targetFile.name)
             else -> Log.i("contextmenu", "something")
         }
@@ -85,24 +87,35 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener {
         return true
     }
 
-
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        // Inflate the menu; this adds items to the action bar if it is present.
         menuInflater.inflate(R.menu.menu_main, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         val id = item.itemId
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true
         }
 
         return super.onOptionsItemSelected(item)
     }
+
+    override fun onReceiveInput(bundle: Bundle?) {
+        val targetFileName = bundle?.getString("filename")
+        val newKeyword = bundle?.getString("inputKeyword")
+        ImageList.getInstance(this).updateImage(targetFileName, newKeyword)
+    }
+
+    private fun updateImage(filename: String?) {
+        val bundle = Bundle()
+        bundle.putString("filename", filename)
+
+        val dialogFragmaent = KeywodInputFragment()
+        Log.i("bundle?", bundle.toString())
+        dialogFragmaent.arguments = bundle
+        dialogFragmaent.show(fragmentManager, "dialog")
+    }
+
 }
