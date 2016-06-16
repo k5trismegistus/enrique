@@ -22,7 +22,7 @@ class DownloadReceiverActivity : Activity() {
             this.finish()
         }
 
-        val dialogFragmaent = DownloadDialogFragment()
+        val dialogFragmaent = KeywodInputFragment()
         dialogFragmaent.show(fragmentManager, "dialog")
     }
 

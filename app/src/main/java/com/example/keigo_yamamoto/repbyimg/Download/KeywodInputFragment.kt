@@ -10,7 +10,7 @@ import android.widget.EditText
 import android.widget.Toast
 import com.example.keigo_yamamoto.repbyimg.R
 
-class DownloadDialogFragment: DialogFragment() {
+class KeywodInputFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         Log.d("fragment", "fragment")

@@ -32,18 +32,17 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener {
 
         imagesGrid.onItemClickListener =
                 AdapterView.OnItemClickListener { parent, view, position, id ->
-                    val imageFile = parent.getItemAtPosition(position) as File
+                    val imageFileName = (parent.getItemAtPosition(position) as File).name
 
-                    val contentUri = FileProvider
-                            .getUriForFile(this, "com.example.keigo_yamamoto.repbyimg.fileprovider", imageFile)
+                    val contentUri = ImageList.getInstance(this).createTmpImage(imageFileName)
 
                     val intent = Intent(Intent.ACTION_SEND)
                     intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
                     intent.addFlags(Intent.FLAG_GRANT_WRITE_URI_PERMISSION)
-                    intent.type = contentResolver.getType(contentUri)
+                    intent.type = "image/jpeg"
                     intent.putExtra(Intent.EXTRA_STREAM, contentUri)
 
-                    startActivity(intent)
+                    startActivityForResult(intent, 0)
                 }
 
         registerForContextMenu(imagesGrid)
