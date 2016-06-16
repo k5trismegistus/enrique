@@ -59,7 +59,18 @@ class ImageList(context: Context?) {
     }
 
     fun updateImage(filename: String?, newKeyword: String?) {
-        Log.i("updateImage", filename)
+
+        if (newKeyword != null) {
+            val realm = Realm.getDefaultInstance()
+
+            realm.beginTransaction()
+            val ri = realm.where(ResuImage::class.java).equalTo("filename", filename).findFirst()
+            ri.keyword = newKeyword
+            realm.commitTransaction()
+        } else {
+            Log.i("update", "failed")
+        }
+
     }
 
     fun deleteImage(filename: String) {
