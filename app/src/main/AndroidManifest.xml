@@ -25,7 +25,10 @@
         <activity
             android:name=".Download.DownloadReceiverActivity"
             android:label="@string/download_activity_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar">
+            android:theme="@style/DialogActivityTheme">
+            <item android:name="android:windowBackground">@android:color/transparent</item>
+            <item android:name="android:colorBackgroundCacheHint">@null</item>
+            <item android:name="android:windowIsTranslucent">true</item>
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
