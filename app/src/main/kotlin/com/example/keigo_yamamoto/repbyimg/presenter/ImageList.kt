@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg.Main
+package com.example.keigo_yamamoto.repbyimg.presenter
 
 import android.content.ContentValues
 import android.content.Context
@@ -6,7 +6,7 @@ import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.MediaStore
 import android.util.Log
-import com.example.keigo_yamamoto.repbyimg.ResuImage
+import com.example.keigo_yamamoto.repbyimg.model.ResuImage
 import io.realm.Realm
 import io.realm.RealmResults
 import java.io.*

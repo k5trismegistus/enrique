@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg.Download
+package com.example.keigo_yamamoto.repbyimg.view
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
-import com.example.keigo_yamamoto.repbyimg.KeywordInputReceiver
+import com.example.keigo_yamamoto.repbyimg.view.KeywordInputReceiver
 import com.example.keigo_yamamoto.repbyimg.R
 
 class KeywodInputFragment : DialogFragment() {

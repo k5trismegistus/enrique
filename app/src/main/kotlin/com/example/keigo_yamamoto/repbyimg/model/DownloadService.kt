@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg.Download
+package com.example.keigo_yamamoto.repbyimg.model
 
 import android.R
 import android.app.Notification
@@ -11,9 +11,9 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.os.IBinder
 import android.util.Log
-import com.example.keigo_yamamoto.repbyimg.Main.ImageList
-import com.example.keigo_yamamoto.repbyimg.Main.MainActivity
-import com.example.keigo_yamamoto.repbyimg.ResuImage
+import com.example.keigo_yamamoto.repbyimg.presenter.ImageList
+import com.example.keigo_yamamoto.repbyimg.view.MainActivity
+import com.example.keigo_yamamoto.repbyimg.model.ResuImage
 import io.realm.Realm
 import okhttp3.OkHttpClient
 import okhttp3.Request

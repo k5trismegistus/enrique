@@ -2,7 +2,7 @@ package com.example.keigo_yamamoto.repbyimg
 
 import android.app.Application
 import android.content.Context
-import com.example.keigo_yamamoto.repbyimg.Main.ImageList
+import com.example.keigo_yamamoto.repbyimg.presenter.ImageList
 import io.realm.Realm
 import io.realm.RealmConfiguration
 

@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg.Main
+package com.example.keigo_yamamoto.repbyimg.presenter
 
 import android.content.Context
 import android.graphics.BitmapFactory
@@ -8,7 +8,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.keigo_yamamoto.repbyimg.R
-import com.example.keigo_yamamoto.repbyimg.SquareImageView
+import com.example.keigo_yamamoto.repbyimg.view.SquareImageView
+import com.example.keigo_yamamoto.repbyimg.presenter.ImageList
 import java.io.File
 import kotlinx.android.synthetic.main.grid_item.*
 

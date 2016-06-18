@@ -1,11 +1,13 @@
-package com.example.keigo_yamamoto.repbyimg.Download
+package com.example.keigo_yamamoto.repbyimg.view
 
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import com.example.keigo_yamamoto.repbyimg.KeywordInputReceiver
+import com.example.keigo_yamamoto.repbyimg.model.DownloadService
+import com.example.keigo_yamamoto.repbyimg.view.KeywodInputFragment
+import com.example.keigo_yamamoto.repbyimg.view.KeywordInputReceiver
 
 
 class DownloadReceiverActivity : Activity(), KeywordInputReceiver {

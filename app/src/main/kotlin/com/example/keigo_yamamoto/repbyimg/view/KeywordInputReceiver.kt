@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg
+package com.example.keigo_yamamoto.repbyimg.view
 
 import android.os.Bundle
 

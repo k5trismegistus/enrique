@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Main.MainActivity"
+            android:name=".view.MainActivity"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".Download.DownloadReceiverActivity"
+            android:name=".view.DownloadReceiverActivity"
             android:label="@string/download_activity_name"
             android:theme="@style/DialogActivityTheme">
             <item android:name="android:windowBackground">@android:color/transparent</item>
@@ -37,7 +37,7 @@
         </activity>
 
         <service
-            android:name=".Download.DownloadService">
+            android:name=".model.DownloadService">
         </service>
 
         <provider

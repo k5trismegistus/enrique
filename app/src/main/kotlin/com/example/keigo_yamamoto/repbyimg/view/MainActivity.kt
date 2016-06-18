@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg.Main
+package com.example.keigo_yamamoto.repbyimg.view
 
 import android.app.Activity
 import android.content.Intent
@@ -11,9 +11,11 @@ import android.view.View
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.*
-import com.example.keigo_yamamoto.repbyimg.Download.KeywodInputFragment
-import com.example.keigo_yamamoto.repbyimg.KeywordInputReceiver
+import com.example.keigo_yamamoto.repbyimg.view.KeywodInputFragment
+import com.example.keigo_yamamoto.repbyimg.view.KeywordInputReceiver
+import com.example.keigo_yamamoto.repbyimg.presenter.ImageGridAdapter
 import com.example.keigo_yamamoto.repbyimg.R
+import com.example.keigo_yamamoto.repbyimg.presenter.ImageList
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 import java.io.File
@@ -59,8 +61,8 @@ class MainActivity : Activity(), SearchView.OnQueryTextListener, KeywordInputRec
     override fun onCreateContextMenu(menu: ContextMenu?, v: View?, menuInfo: ContextMenu.ContextMenuInfo?) {
         super.onCreateContextMenu(menu, v, menuInfo)
         menu?.setHeaderTitle(R.string.edit_dialog_title)
-        menu?.add(0,0,0,R.string.menu_item_edit)
-        menu?.add(0,1,1,R.string.menu_item_delete)
+        menu?.add(0,0,0, R.string.menu_item_edit)
+        menu?.add(0,1,1, R.string.menu_item_delete)
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {

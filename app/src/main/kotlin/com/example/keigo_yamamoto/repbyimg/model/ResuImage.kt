@@ -1,4 +1,4 @@
-package com.example.keigo_yamamoto.repbyimg
+package com.example.keigo_yamamoto.repbyimg.model
 
 import io.realm.RealmObject
 import io.realm.annotations.Index
